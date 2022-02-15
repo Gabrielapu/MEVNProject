@@ -6,6 +6,7 @@ const router = express.Router()
 // Add new note
 router.post('/new-note', async(req, res) => {
   const { body } = req;
+  console.log(body)
   try {
     const createdNote = await Note.create(body);
     res.status(200).json(createdNote)
@@ -64,7 +65,7 @@ router.delete('/note/:id', async(req, res) => {
     })
   } catch (error) {
     return res.status(400).json({
-      message: 'Ocurrio un error al obtener la nota',
+      message: 'Ocurrio un error al eliminar la nota',
       error
     })
   }

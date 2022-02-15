@@ -8,7 +8,8 @@ import mongoose from 'mongoose'
 const app = express();
 
 // Conexion a DB
-const uri = 'mongodb://localhost:27017/4learnBD'
+//const uri = 'mongodb://localhost:27017/4learnBD'
+const uri = 'mongodb+srv://MisNotas:cyvdX2CRo3crNCv4@misnotas.nbgg4.mongodb.net/MisNotas?retryWrites=true&w=majority'
 const options = {};
 mongoose.connect(uri, options).then(
   () => { console.log('Conectado a DB') },
