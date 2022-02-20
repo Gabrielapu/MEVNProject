@@ -16,11 +16,15 @@
     "@babel/core": "^7.17.2",
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
+    "bcrypt": "^5.0.1",
     "connect-history-api-fallback": "^1.6.0",
     "cors": "^2.8.5",
     "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.1",
-    "morgan": "^1.10.0"
+    "mongoose-unique-validator": "^3.0.0",
+    "morgan": "^1.10.0",
+    "underscore": "^1.13.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.0",

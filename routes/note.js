@@ -1,12 +1,14 @@
 import express from 'express'
 import Note from '../models/note';
-
+const { 
+  verifyAuthentication
+} = require('../middlewares/authentication')
 const router = express.Router()
 
 // Add new note
-router.post('/new-note', async(req, res) => {
-  const { body } = req;
-  console.log(body)
+router.post('/new-note', verifyAuthentication, async(req, res) => {
+  const body = req.body;
+  body.userId = req.user._id
   try {
     const createdNote = await Note.create(body);
     res.status(200).json(createdNote)
@@ -20,7 +22,6 @@ router.post('/new-note', async(req, res) => {
 
 // Get by id
 router.get('/note/:id', async(req, res) => {
-  console.log(req.params)
   const _id = req.params.id
   console.log(_id);
   
@@ -36,9 +37,10 @@ router.get('/note/:id', async(req, res) => {
 })
 
 // Get all notes
-router.get('/note', async (req, res) => {
+router.get('/note', verifyAuthentication, async (req, res) => {
+  const userId = req.user._id
   try {
-    const notes = await Note.find();
+    const notes = await Note.find({ userId });
     res.status(200).json(notes)
   } catch (error) {
     return res.status(400).json({
